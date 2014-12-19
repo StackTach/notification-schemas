@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute common message schemas",
+
+    "messages": {
+        "common": {
+            "type": "object",
+            "properties": {
+                "access_ip_v4": { "$ref": "types.json#/definitions/string_null" },
+                "access_ip_v6": { "$ref": "types.json#/definitions/string_null" },
+                "architecture": { "type": "string" },
+                "availability_zone": { "$ref": "types.json#/definitions/string_null" },
+                "created_at": { "type": "string", "format": "date-time" },
+                "deleted_at": { "$ref": "types.json#/definitions/date_time_null" },
+                "disk_gb": { "type": "integer" },
+                "display_name": { "type": "string" },
+                "ephemeral_gb": {"type": "integer" },
+                "host": { "type": "string" },
+                "hostname": { "$ref": "types.json#/definitions/string_null" },
+                "image_meta": { "$ref": "objects.json#/image_meta" },
+                "image_ref_url": { "type": "string" },
+                "instance_flavor_id": { "type": "string" },
+                "instance_id": { "$ref": "types.json#/definitions/uuid_empty" },
+                "instance_type": { "type": "string" },
+                "instance_type_id": { "type": "integer" },
+                "kernel_id": { "type": "string" },
+                "launched_at": { "type": "string", "format": "date-time"},
+                "memory_mb": { "type": "integer" },
+                "metadata": { "type": "object" },
+                "node": { "type": "string" },
+                "os_type": { "type": "string" },
+                "ramdisk_id": { "type": "string" },
+                "reservation_id": { "$ref": "types.json#/definitions/string_null" },
+                "root_gb": { "type": "integer" },
+                "state": { "$ref": "types.json#/definitions/string_null" },
+                "state_description": { "type": "string" },
+                "tenant_id": { "type": "string" },
+                "terminated_at": { "$ref": "types.json#/definitions/date_time_null" },
+                "user_id": { "$ref": "types.json#/definitions/uuid_empty" },
+                "vcpus": { "type": "integer" },
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "scheduler common message schemas",
+
+    "messages": {
+        "request_spec": {
+            "type": "object",
+            "properties": {
+                "num_instances": { "type": "integer" },
+                "block_device_mapping": { "$ref": "objects.json#/objects/block_device_mapping" },
+                "image": { "$ref": "objects.json#/objects/image" },
+                "instance_type": { "$ref": "objects.json#/objects/instance_type" },
+                "instance_properties": { "$ref": "objects.json#/objects/instance_properties" },
+                "security_group": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "instance_uuids": {
+                    "type": "array",
+                    "items": { "$ref": "types.json#/definitions/uuid" }
+                }
+            }
+        }
+    }
+}

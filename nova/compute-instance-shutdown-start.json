@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute-instance-shutdown-start",
+
+    "$ref": "compute.json#/messages/common"
+}

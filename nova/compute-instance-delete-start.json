@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute-instance-delete-start",
+
+    "$ref": "compute.json#/messages/common"
+}

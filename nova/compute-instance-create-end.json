@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema#",
 
-    "title": "compute-instance-create-start",
+    "title": "compute-instance-create-end",
 
     "allOf": [
         { "$ref": "compute.json#/messages/common"},

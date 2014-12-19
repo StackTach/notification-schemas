@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute-instance-create-start",
+
+    "allOf": [
+        { "$ref": "compute.json#/messages/common"},
+        {
+            "type": "object",
+            "properties": {
+                "audit_period_beginning": { "type": "string", "format": "date-time"},
+                "audit_period_ending": { "type": "string", "format": "date-time"},
+                "bandwidth": { "type": "object" },
+                "new_task_state": { "$ref": "types.json#/definitions/string_null" },
+                "old_state": { "$ref": "types.json#/definitions/string_null" },
+                "old_task_state": { "$ref": "types.json#/definitions/string_null" }
+            }
+        }
+    ]
+}
