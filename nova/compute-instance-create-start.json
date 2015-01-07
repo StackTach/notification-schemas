@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema#",
 
-    "title": "compute-instance-create-start",
+    "title": "compute.instance.create.start",
 
     "$ref": "objects.json#/objects/instance_common"
 }

@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema#",
 
-    "title": "compute-instance-rescue-end",
+    "title": "compute.instance.rescue.end",
 
     "allOf": [
         { "$ref": "objects.json#/objects/instance_common" },

@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema#",
 
-    "title": "compute-instance-delete-end",
+    "title": "compute.instance.delete.end",
 
     "$ref": "objects.json#/objects/instance_common"
 }

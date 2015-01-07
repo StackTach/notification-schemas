@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema#",
 
-    "title": "scheduler-run_instance",
+    "title": "scheduler.run_instance",
 
     "type": "object",
     "properties": {

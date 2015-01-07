@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema#",
 
-    "title": "compute-instance-resize-end",
+    "title": "compute.instance.resize.end",
 
     "allOf": [
         { "$ref": "objects.json#/objects/instance_common" },

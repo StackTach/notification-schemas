@@ -1,7 +1,9 @@
 {
     "$schema": "http://json-schema.org/schema#",
 
-    "title": "compute.instance.create.error",
+    "title": "compute.instance.instance.create.error",
+
+    "description": "A duplicate of compute.instance.create.error. Likely an error.",
 
     "allOf": [
         { "$ref": "objects.json#/objects/instance_common" },
