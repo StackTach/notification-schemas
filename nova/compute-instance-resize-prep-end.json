@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute-instance-resize-prep-end",
+
+    "allOf": [
+        { "$ref": "objects.json#/objects/instance_common" },
+        {
+            "properties": {
+                "new_instance_type": { "type": "string" },
+                "new_instance_type_id": { "type": "integer" }
+            }
+        }
+    ]
+}

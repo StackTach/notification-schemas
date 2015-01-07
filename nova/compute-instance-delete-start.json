@@ -3,5 +3,5 @@
 
     "title": "compute-instance-delete-start",
 
-    "$ref": "compute.json#/messages/common"
+    "$ref": "objects.json#/objects/instance_common"
 }

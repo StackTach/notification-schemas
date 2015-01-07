@@ -3,14 +3,5 @@
 
     "title": "compute-instance-create-start",
 
-    "allOf": [
-        { "$ref": "compute.json#/messages/common"},
-        {
-            "type": "object",
-            "properties": {
-                "image_name": { "type": "string" },
-                "message": { "type": "string" }
-            }
-        }
-    ]
+    "$ref": "objects.json#/objects/instance_common"
 }

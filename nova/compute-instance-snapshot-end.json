@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema#",
 
-    "title": "compute-instance-shutdown-start",
+    "title": "compute-instance-snapshot-start",
 
     "$ref": "objects.json#/objects/instance_common"
 }

@@ -73,41 +73,144 @@
             "items": {
                 "type": "object",
                 "properties": {
-                    "instance_uuid": { "$ref": "types.json#/definitions/uuid"},
-                    "guest_format": { "$ref": "types.json#/definitions/string_null"},
                     "boot_index": { "type": "integer" },
+                    "delete_on_termination": { "type": "boolean" },
+                    "destination_type": { "type": "string" },
+                    "device_name": { "$ref": "types.json#/definitions/string_null"},
+                    "device_type": { "type": "string" },
+                    "disk_bus": { "$ref": "types.json#/definitions/string_null"},
+                    "guest_format": { "$ref": "types.json#/definitions/string_null"},
+                    "image_id": { "$ref": "types.json#/definitions/uuid"},
+                    "instance_uuid": { "$ref": "types.json#/definitions/uuid"},
                     "no_device": { "$ref": "types.json#/definitions/string_null"},
                     "snapshot_id": { "$ref": "types.json#/definitions/string_null"},
-                    "volume_size": { "$ref": "types.json#/definitions/integer_null"},
-                    "device_name": { "$ref": "types.json#/definitions/string_null"},
-                    "disk_bus": { "$ref": "types.json#/definitions/string_null"},
-                    "image_id": { "$ref": "types.json#/definitions/uuid"},
                     "source_type": { "type": "string" },
-                    "device_type": { "type": "string" },
                     "volume_id": { "$ref": "types.json#/definitions/string_null"},
-                    "destination_type": { "type": "string" },
-                    "delete_on_termination": { "type": "boolean" }
+                    "volume_size": { "$ref": "types.json#/definitions/integer_null"}
                 }
             }
         },
-    
+
+        "bandwidth": {
+            "type": "object",
+            "properties": {
+                "public": {
+                    "type": "object",
+                    "properties": {
+                        "bw_in": { "type": "integer" },
+                        "bw_out": { "type": "integer" }
+                    }
+                },
+                "private": {
+                    "type": "object",
+                    "properties": {
+                        "bw_in": { "type": "integer" },
+                        "bw_out": { "type": "integer" }
+                    }
+                }
+            }
+        },
+
         "instance_type": {
             "type": "object",
             "properties": {
-                "root_gb": { "type": "integer" },
-                "name": { "type": "string" },
                 "ephemeral_gb": { "type": "integer" },
-                "memory_mb": { "type": "integer" },
-                "vcpus": { "type": "integer" },
                 "extra_specs": { "type": "object" },
-                "swap": { "type": "integer" },
-                "rxtx_factor": { "type": "number" },
                 "flavorid": { "type": "string" },
+                "id": { "type": "integer" },
+                "memory_mb": { "type": "integer" },
+                "name": { "type": "string" },
+                "root_gb": { "type": "integer" },
+                "rxtx_factor": { "type": "number" },
+                "swap": { "type": "integer" },
                 "vcpu_weight": { "type": "integer" },
-                "id": { "type": "integer" }
+                "vcpus": { "type": "integer" }
             }
         },
-    
+
+        "ip": {
+            "type": "object",
+            "properties": {
+                "address": { "$ref": "types.json#/definitions/ip_address" },
+                "meta": { "type": "object" },
+                "type": { "type": "string" },
+                "version": { "$ref": "types.json#/definitions/ip_version" }
+            }
+        },
+
+        "fixed_ip": {
+            "allOf": [
+                { "$ref": "#/objects/ip" },
+                {
+                    "properties": {
+                        "floating_ips": { "type": "array" },
+                        "label": { "type": "string" }
+                    }
+                }
+            ]
+        },
+
+        "subnet": {
+            "type": "object",
+            "properties": {
+                "cidr": { "type": "string" },
+                "dns": {
+                    "type": "array",
+                    "items": { "$ref": "#/objects/ip" }
+                },
+                "gateway": { "$ref": "#/objects/ip" },
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            { "$ref": "#/objects/ip" },
+                            {
+                                "properties": {
+                                    // not sure if an entry here would be an ip object, plain ip address, or what
+                                    "floating_ips": {
+                                        "type": "array",
+                                        "items": { "type": "string" }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "meta": { "type": "object" },
+                "routes": { "type": "array" },
+                "version": { "$ref": "types.json#/definitions/ip_version" }
+            }
+        },
+
+        "network": {
+            "type": "object",
+            "properties": {
+                "bridge": { "type": "string" },
+                "id": { "$ref": "types.json#/definitions/uuid" },
+                "label": { "type": "string" },
+                "meta": { "type": "object" },
+                "subnets": {
+                    "type": "array",
+                    "items": { "$ref": "#/objects/subnet" }
+                }
+            }
+        },
+
+        "network_info": {
+            "type": "object",
+            "properties": {
+                "address": { "$ref": "types.json#/definitions/ip_address" },
+                "devname": { "type": "string" },
+                "id": { "$ref": "types.json#/definitions/uuid" },
+                "meta": { "type": "object" },
+                "network": { "$ref": "#/objects/network" },
+                "ovs_interfaceid": { "$ref": "types.json#/definitions/string_null" },
+                "qbg_params": { "$ref": "types.json#/definitions/string_null" },
+                "qbh_params": { "$ref": "types.json#/definitions/string_null" },
+                "type": { "$ref": "types.json#/definitions/string_null" }
+            }
+        },
+
         "security_group": {
             "allOf": [
                 {
@@ -123,110 +226,155 @@
                 { "$ref": "types.json#/definitions/timestamps" }
             ]
         },
-    
+
         "info_cache": {
             "allOf": [
                 {
                     "type": "object",
                     "properties": {
                         "instance_uuid": { "$ref": "types.json#/definitions/uuid"},
-                        "network_info": []
+                        "network_info": {
+                            "type": "array",
+                            "items": { "$ref": "#/objects/network_info" }
+                        }
                     }
                 },
                 { "$ref": "types.json#/definitions/timestamps" }
             ]
         },
-    
+
+        "metadata": {
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+        },
+
         // Not sure if this really needs a full schema. The contents are
-        // fairly free-form. Might be best just to define it as "object"
-        // and leave the specific properties undefined.
+        // fairly free-form. Might be best just to just use the generic
+        // 'metadata' object above
         "system_metadata": {
+            "allOf": [
+                { "$ref": "#/objects/metadata" },
+                {
+                    "properties": {
+                        "image_auto_disk_config": { "$ref": "types.json#/definitions/enabled_disabled" },
+                        "image_base_image_ref": { "$ref": "types.json#/definitions/uuid" },
+                        "image_cache_in_nova": { "$ref": "types.json#/definitions/boolean_string" },
+                        "image_container_format": { "type": "string" },
+                        "image_disk_format": { "type": "string" },
+                        "image_image_type": { "type": "string" },
+                        "image_min_disk": { "type": "integer" },
+                        "image_min_ram": { "type": "integer" },
+                        "image_org.openstack__1__architecture": { "type": "string" },
+                        "image_org.openstack__1__os_distro": { "type": "string" },
+                        "image_org.openstack__1__os_version": { "type": "string" },
+                        "image_os_distro": { "type": "string" },
+                        "image_os_type": { "type": "string" },
+                        "image_vm_mode": { "type": "string" },
+                        "instance_type_ephemeral_gb": { "$ref": "types.json#/definitions/integer_string" },
+                        "instance_type_flavorid": { "type": "string" },
+                        "instance_type_id": { "type": "string" },
+                        "instance_type_memory_mb": { "$ref": "types.json#/definitions/integer_string" },
+                        "instance_type_name": { "type": "string" },
+                        "instance_type_root_gb": { "$ref": "types.json#/definitions/integer_string" },
+                        "instance_type_rxtx_factor": { "$ref": "types.json#/definitions/integer_string" },
+                        "instance_type_swap": { "type": "string" },
+                        "instance_type_vcpu_weight": { "$ref": "types.json#/definitions/integer_string" },
+                        "instance_type_vcpus": { "$ref": "types.json#/definitions/integer_string" }
+                    }
+                }
+            ]
+        },
+
+        "instance_base": {
+            "description": "Set of instance properties common across all instance notifications",
             "type": "object",
             "properties": {
-                "image_cache_in_nova": { "$ref": "types.json#/definitions/boolean_string" },
-                "instance_type_id": { "type": "string" },
-                "image_min_ram": { "type": "integer" },
-                "image_os_distro": { "type": "string" },
-                "instance_type_vcpu_weight": { "$ref": "types.json#/definitions/integer_string" },
-                "instance_type_ephemeral_gb": { "$ref": "types.json#/definitions/integer_string" },
-                "image_org.openstack__1__os_version": { "type": "string" },
-                "image_org.openstack__1__os_distro": { "type": "string" },
-                "image_org.openstack__1__architecture": { "type": "string" },
-                "image_base_image_ref": { "$ref": "types.json#/definitions/uuid" },
-                "instance_type_swap": { "type": "string" },
-                "image_os_type": { "type": "string" },
-                "instance_type_root_gb": { "$ref": "types.json#/definitions/integer_string" },
-                "instance_type_name": { "type": "string" },
-                "image_image_type": { "type": "string" },
-                "instance_type_rxtx_factor": { "$ref": "types.json#/definitions/integer_string" },
-                "image_auto_disk_config": { "$ref": "types.json#/definitions/enabled_disabled" },
-                "instance_type_vcpus": "1",
-                "image_disk_format": { "type": "string" },
-                "instance_type_memory_mb": { "$ref": "types.json#/definitions/integer_string" },
-                "image_vm_mode": { "type": "string" },
-                "image_min_disk": { "type": "integer" },
-                "instance_type_flavorid": { "type": "string" },
-                "image_container_format": { "type": "string" }
+                "access_ip_v4": { "$ref": "types.json#/definitions/string_null" },
+                "access_ip_v6": { "$ref": "types.json#/definitions/string_null" },
+                "architecture": { "type": "string" },
+                "availability_zone": { "$ref": "types.json#/definitions/string_null" },
+                "display_name": { "type": "string" },
+                "ephemeral_gb": {"type": "integer" },
+                "host": { "type": "string" },
+                "hostname": { "$ref": "types.json#/definitions/string_null" },
+                "instance_type_id": { "type": "integer" },
+                "kernel_id": { "type": "string" },
+                "launched_at": { "type": "string", "format": "date-time"},
+                "memory_mb": { "type": "integer" },
+                "metadata": { "type": "object" },
+                "node": { "type": "string" },
+                "os_type": { "type": "string" },
+                "ramdisk_id": { "type": "string" },
+                "reservation_id": { "$ref": "types.json#/definitions/string_null" },
+                "root_gb": { "type": "integer" },
+                "terminated_at": { "$ref": "types.json#/definitions/date_time_null" },
+                "user_id": { "$ref": "types.json#/definitions/uuid_empty" },
+                "vcpus": { "type": "integer" }
             }
         },
-    
-        "instance_properties": {
+
+        "instance_common": {
+            "description": "Set of instance properties used in many instance notifications",
+            // Note: some notifications do not include image_name and/or message. This seems random."
             "allOf": [
+                { "$ref": "#/objects/instance_base" },
+                { "$ref": "types.json#/definitions/timestamps" },
                 {
-                    "type": "object",
                     "properties": {
-                        "vm_state": { "type": "string" },
-                        "availability_zone": { "$ref": "types.json#/definitions/string_null" },
-                        "ephemeral_gb": { "type": "integer" },
-                        "instance_type_id": { "type": "integer" },
-                        "user_data": { "$ref": "types.json#/definitions/string_null" },
+                        "disk_gb": { "type": "integer" },
+                        "image_meta": { "$ref": "objects.json#/image_meta" },
+                        "image_name": { "type": "string" },
+                        "image_ref_url": { "type": "string" },
+                        "instance_flavor_id": { "type": "string" },
+                        "instance_id": { "$ref": "types.json#/definitions/uuid_empty" },
+                        "instance_type": { "type": "string" },
+                        "message": { "type": "string" },
+                        "state": { "$ref": "types.json#/definitions/string_null" },
+                        "state_description": { "type": "string" },
+                        "tenant_id": { "type": "string" }
+                    }
+                }
+            ]
+        },
+
+        "instance_full": {
+            "description": "Full set of instance properties used in scheduler and higher level nova notifications",
+            "allOf": [
+                { "$ref": "#/objects/instance_base" },
+                { "$ref": "types.json#/definitions/timestamps" },
+                {
+                    "properties": {
+                        "auto_disk_config": { "type": "boolean" },
+                        "cell_name": { "$ref": "types.json#/definitions/string_null" },
                         "cleaned": { "type": "boolean" },
-                        "vm_mode": { "type": "string" },
-                        "reservation_id": { "type": "string" },
-                        "id": { "type": "integer" },
-                        "disable_terminate": { "type": "boolean" },
-                        "display_name": { "type": "string" },
-                        "uuid": { "$ref": "types.json#/definitions/uuid"},
-                        "default_swap_device": { "$ref": "types.json#/definitions/string_null" },
-                        "hostname": { "type": "string" },
-                        "launched_on": { "$ref": "types.json#/definitions/string_null" },
-                        "launched_at": { "$ref": "types.json#/definitions/date_time_null" },
-                        "display_description": { "type": "string" },
-                        "key_data": { "$ref": "types.json#/definitions/string_null" },
-                        "kernel_id": { "type": "string" },
-                        "power_state": { "type": "integer" },
+                        "config_drive": { "type": "string" },
                         "default_ephemeral_device": { "$ref": "types.json#/definitions/string_null" },
+                        "default_swap_device": { "$ref": "types.json#/definitions/string_null" },
+                        "disable_terminate": { "type": "boolean" },
+                        "display_description": { "type": "string" },
+                        "ephemeral_key_uuid": { "$ref": "types.json#/definitions/uuid_null" },
+                        "id": { "type": "integer" },
+                        "image_ref": { "$ref": "types.json#/definitions/uuid"},
+                        "key_data": { "$ref": "types.json#/definitions/string_null" },
+                        "key_name": { "type": "string" },
+                        "launch_index": { "type": "integer" },
+                        "launched_on": { "$ref": "types.json#/definitions/string_null" },
+                        "locked": { "type": "boolean" },
+                        "locked_by": { "$ref": "types.json#/definitions/string_null" },
+                        "name": { "type": "string" },
+                        "power_state": { "type": "integer" },
                         "progress": { "type": "integer" },
                         "project_id": { "type": "string" },
-                        "config_drive": { "type": "string" },
-                        "node": { "type": "string" },
-                        "ramdisk_id": { "type": "string" },
-                        "access_ip_v6": { "$ref": "types.json#/definitions/string_null" },
-                        "access_ip_v4": { "$ref": "types.json#/definitions/string_null" },
-                        "key_name": { "type": "string" },
-                        "host": { "type": "string" },
-                        "ephemeral_key_uuid": { "$ref": "types.json#/definitions/uuid_null" },
-                        "architecture": { "type": "string" },
-                        "user_id": { "$ref": "types.json#/definitions/uuid"},
-                        "task_state": { "type": "string" },
-                        "shutdown_terminate": { "type": "boolean" },
-                        "cell_name": { "$ref": "types.json#/definitions/string_null" },
-                        "root_gb": { "type": "integer" },
-                        "locked": { "type": "boolean" },
-                        "name": { "type": "string" },
-                        "locked_by": { "$ref": "types.json#/definitions/string_null" },
-                        "launch_index": { "type": "integer" },
-                        "metadata": { "type": "object" },
-                        "memory_mb": { "type": "integer" },
-                        "vcpus": { "type": "integer" },
-                        "image_ref": { "$ref": "types.json#/definitions/uuid"},
                         "root_device_name": { "$ref": "types.json#/definitions/string_null" },
-                        "auto_disk_config": { "type": "boolean" },
-                        "os_type": { "type": "string" },
-    
                         "scheduled_at": { "$ref": "types.json#/definitions/date_time_null" },
-                        "terminated_at": { "$ref": "types.json#/definitions/date_time_null" },
-    
+                        "shutdown_terminate": { "type": "boolean" },
+                        "system_metadata": { "$ref": "#/objects/system_metadata" },
+                        "task_state": { "type": "string" },
+                        "user_data": { "$ref": "types.json#/definitions/string_null" },
+                        "uuid": { "$ref": "types.json#/definitions/uuid" },
+                        "vm_mode": { "type": "string" },
+                        "vm_state": { "type": "string" },
+
                         "security_groups": {
                             "objects": {
                                 "type": "array",
@@ -234,25 +382,86 @@
                             }
                         },
     
-                        "info_cache": {
-                            "allOf": [
+                        "info_cache": { "$ref": "#/objects/info_cache" }
+                    }
+                }
+            ]
+        },
+
+        "context": {
+            "type": "object",
+            "properties": {
+                "_read_deleted": { "$ref": "types.json#/definitions/boolean_string_y_n" },
+                "auth_token": { "$ref": "types.json#/definitions/uuid" },
+                "glance_api_servers": { "$ref": "types.json#/definitions/array_null" },
+                "instance_lock_checked": { "type": "boolean" },
+                "is_admin": { "type": "boolean" },
+                "project_id": { "type": "string" },
+                "project_name": { "type": "string" },
+                "quota_class": { "$ref": "types.json#/definitions/string_null" },
+                "remote_address": { "$ref": "types.json#/definitions/ip_address" },
+                "request_id": { "type": "string" },
+                "roles": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "timestamp": { "$ref": "types.json#/definitions/date-time" },
+                "user_id": { "type": "string" },
+                "user_name": { "type": "string" }
+            }
+        },
+
+        "bdm": {
+            "type": "object",
+            "properties": {
+                "created_at": { "type": "date-time" },
+                "delete_on_termination": { "type": "boolean" },
+                "deleted": { "type": "integer" },
+                "deleted_at": { "$ref": "types.json#/definitions/date_time_null" },
+                "device_name": { "type": "string" },
+                "id": { "type": "integer" },
+                "instance_uuid": { "$ref": "types.json#/definitions/uuid" },
+                "no_device": { "$ref": "types.json#/definitions/string_null" },
+                "snapshot_id": { "$ref": "types.json#/definitions/uuid_null" },
+                "updated_at": { "type": "date-time" },
+                "virtual_name": { "$ref": "types.json#/definitions/string_null" },
+                "volume_id": { "$ref": "types.json#/definitions/uuid" },
+                "volume_size": { "$ref": "types.json#/definitions/integer_null" }
+            }
+        },
+
+        // Why are there two slightly different exception representations?
+        // Should only need one. UUID version seems to be only used in one place?
+        "instance_exception": {
+            "type": "object",
+            "properties": {
+                "kwargs": {
+                    "allOf": [
+                        {
+                            "oneOf": [
                                 {
-                                    "type": "object",
                                     "properties": {
-                                        "instance_uuid": "[[[[UUID_1]]]]",
-                                        "network_info": []
+                                        "instance_id": { "$ref": "types.json#/definitions/uuid" }
                                     }
                                 },
-                                { "$ref": "types.json#/definitions/timestamps" }
+                                {
+                                    "properties": {
+                                        "instance_uuid": { "$ref": "types.json#/definitions/uuid" }
+                                    }
+                                }
                             ]
                         },
-    
-                        "system_metadata": { "$ref": "#/objects/system_metadata" }
-                    }
-                },
-                { "$ref": "types.json#/definitions/timestamps" }
-            ]
+                        {
+                            "properties": {
+                                "reason": { "type": "string" },
+                                "code": { "type": "integer" }
+                            }
+                        }
+                    ]
+                }
+            }
         }
+
     }
 }
 

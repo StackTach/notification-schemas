@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute-instance-create-end",
+
+    "allOf": [
+        { "$ref": "objects.json#/objects/instance_common" },
+        {
+            "properties": {
+                "code": { "type": "integer" },
+                "exception": { "$ref": "objects.json#/objects/instance_exception"}
+            }
+        }
+    ]
+}

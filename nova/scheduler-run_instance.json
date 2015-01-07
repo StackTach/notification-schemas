@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "scheduler-run_instance",
+
+    "type": "object",
+    "properties": {
+        "instance_id": { "$ref": "types.json#/definition/uuid" },
+        "instance_properties": { "$ref": "objects.json#/objects/instance_full" },
+        "method": { "type": "string" },
+        "reason": { "$ref": "objects.json#/objects/instance_exception" },
+        "request_spec": { "$ref": "scheduler.json#/messages/request_spec" },
+        "state": { "type": "string" }
+    }
+}

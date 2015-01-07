@@ -105,6 +105,11 @@
             "enum": ["True", "False"]
         },
 
+        "boolean_string_y_n": {
+            "type": "string",
+            "enum": ["yes", "no"]
+        },
+
         "timestamps": {
             "type": "object",
             "properties": {
@@ -113,6 +118,38 @@
                 "deleted": { "type": "boolean" },
                 "deleted_at": { "$ref": "#/definitions/date_time_null"}
             }
+        },
+
+        "ip_v4": {
+            "title": "IPv4 address",
+            "description": "Just a string for now, but tighten up if possible.",
+            "type": "string"
+        },
+
+        "ip_v6": {
+            "title": "IPv6 address",
+            "description": "Just a string for now, but tighten up if possible.",
+            "type": "string"
+        },
+
+        "ip_address": {
+            "title": "IPv4 or IPv6 address",
+            "oneOf": [
+                { "$ref": "#/definitions/ip_v4"},
+                { "$ref": "#/definitions/ip_v6"}
+            ]
+        },
+
+        "ip_version": {
+            "type": "integer",
+            "enum": [4, 6]
+        },
+
+        "array_null": {
+            "oneOf": [
+                { "type": "array" },
+                { "type": "null" }
+            ]
         }
     }
 }
