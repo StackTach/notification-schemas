@@ -1,0 +1,155 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "Data type definitions",
+    "description": "Basic data types unique used in OpenStack notifications",
+
+    "definitions": {
+        "string_null": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+
+        "integer_null": {
+            "oneOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+
+        "integer_string": {
+            "title": "Integer string",
+            "description": "An integer represented as a string, with optional sign",
+
+            "type": "string",
+            "pattern": "^0|-?[1-9][0-9]*"
+        },
+
+        "number_string": {
+            "title": "Number string",
+            "description": "An number represented as a string, with optional sign and fractional portion",
+
+            "type": "string",
+            "pattern": "^0|-?[1-9][0-9]*(\.[0-9]+)?"
+        },
+
+        "date_time_null": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+
+        "uuid": {
+            "title": "UUID string",
+            "description": "UUID formatted string",
+
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-‌​fA-F]{12}$"
+        },
+
+        "uuid_empty": {
+            "title": "UUID or empty",
+            "description": "Match a UUID formatted string or empty string",
+
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/uuid"
+                },
+                {
+                    "type": "string",
+                    "maxLength": 0
+                }
+            ]
+        },
+
+        "uuid_null": {
+            "title": "UUID or null",
+            "description": "Match a UUID formatted string or null",
+
+            "oneOf": [
+                { "$ref": "#/definitions/uuid"},
+                { "type": "null" }
+            ]
+        },
+
+        "enabled_disabled": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "enum": ["enabled", "disabled"]
+                },
+                {
+                    "type": "boolean"
+                }
+            ]
+        },
+
+        "boolean_string": {
+            "type": "string",
+            "enum": ["True", "False"]
+        },
+
+        "boolean_string_y_n": {
+            "type": "string",
+            "enum": ["yes", "no"]
+        },
+
+        "timestamps": {
+            "type": "object",
+            "properties": {
+                "created_at": { "type": "string", "format": "date-time" },
+                "updated_at": { "$ref": "#/definitions/date_time_null"},
+                "deleted": { "type": "boolean" },
+                "deleted_at": { "$ref": "#/definitions/date_time_null"}
+            }
+        },
+
+        "ip_v4": {
+            "title": "IPv4 address",
+            "description": "Just a string for now, but tighten up if possible.",
+            "type": "string"
+        },
+
+        "ip_v6": {
+            "title": "IPv6 address",
+            "description": "Just a string for now, but tighten up if possible.",
+            "type": "string"
+        },
+
+        "ip_address": {
+            "title": "IPv4 or IPv6 address",
+            "oneOf": [
+                { "$ref": "#/definitions/ip_v4"},
+                { "$ref": "#/definitions/ip_v6"}
+            ]
+        },
+
+        "ip_version": {
+            "type": "integer",
+            "enum": [4, 6]
+        },
+
+        "array_null": {
+            "oneOf": [
+                { "type": "array" },
+                { "type": "null" }
+            ]
+        }
+    }
+}

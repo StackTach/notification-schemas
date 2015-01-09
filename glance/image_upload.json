@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "image.upload",
+
+    "oneOf": [
+        // In case of error, only a string with an error msg is returned
+        { "type": "string" },
+        { "$ref": "objects.json#/objects/image" }
+    ]
+}

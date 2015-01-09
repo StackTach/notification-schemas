@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "Object types",
+    "description": "Complex object types used in OpenStack notifications",
+
+    "objects": {
+        "image_properties": {
+            "type": "object",
+            "properties": {
+                // Lack of consistency of booleans
+                "cache_in_nova": { "enum": ["True", "False"]},
+                "image_type": { "type": "string" },
+                "os_distro": { "type": "string" },
+                "os_type": { "type": "string" },
+                "vm_mode": { "type": "string" },
+
+                "org.openstack__1__os_distro": { "type": "string" },
+                "org.openstack__1__architecture": { "type": "string" },
+                // Can this be an integer?
+                "org.openstack__1__os_version": { "type": "string" }
+            }
+        },
+
+        "image": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "checksum": { "type": "string" },
+                        "container_format": { "type": "string" },
+                        "disk_format": { "type": "string" },
+                        "id": { "$ref": "types.json#/definitions/uuid" },
+                        "is_public": { "type": "boolean" },
+                        "min_disk": { "type": "integer" },
+                        "min_ram": { "type": "integer" },
+                        "name": { "type": "string" },
+                        "owner": { "type": "string" },
+                        "properties": { "$ref": "#/objects/image_properties" },
+                        "protected": { "type": "boolean" },
+                        "size": { "type": "integer" },
+                        "status": { "type": "string" },
+                        "tags": { "type": "array", "items": { "type": "string" } }
+                    }
+                },
+                { "$ref": "types.json#/definitions/timestamps" }
+            ]
+        },
+
+        "image_meta": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        // This is "disabled" in some places and false in others
+                        "auto_disk_config": { "$ref": "types.json#/definitions/enabled_disabled"},
+                        "base_image_ref": { "$ref": "types.json#/definitions/uuid"},
+                        // Enum?
+                        "container_format": { "type": "string" },
+                        // Enum?
+                        "disk_format": { "type": "string" },
+                        // Inconsistent with image - why not an integer?
+                        "min_disk": { "$ref": "types.json#/definitions/integer_string"},
+                        // Inconsistent with image - why is this a string and not an integer?
+                        "min_ram": { "$ref": "types.json#/definitions/enabled_disabled"}
+                    }
+                },
+                { "$ref": "#/objects/image_properties" }
+            ]
+        },
+
+        "task": {
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": { "$ref": "types.json#/definitions/uuid"},
+                        // This never actually appears to get set to anything other than null
+                        // But I believe that's a bug
+                        "message": { "$ref": "types.json#/definitions/string_null"},
+                        "owner": { "type": "string" },
+                        // This never actually appears to get set to anything other than null
+                        // But I believe that's a bug
+                        "result": { "$ref": "types.json#/definitions/string_null"},
+                        "status": { "type": "string" },
+                        "type": { "type": "string" }
+                    }
+                },
+                { "$ref": "#/objects/image_properties" }
+            ]
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "task.delete",
+
+    "$ref": "objects.json#/objects/task"
+}

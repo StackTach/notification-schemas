@@ -27,19 +27,18 @@
                 {
                     "type": "object",
                     "properties": {
-                        "id": { "$ref": "types.json#/definitions/uuid" },
-                        "name": { "type": "string" },
-                        "status": { "type": "string" },
-                        "owner": { "type": "string" },
-                        "is_public": { "type": "boolean" },
+                        "checksum": { "type": "string" },
                         "container_format": { "type": "string" },
                         "disk_format": { "type": "string" },
+                        "id": { "$ref": "types.json#/definitions/uuid" },
+                        "is_public": { "type": "boolean" },
                         "min_disk": { "type": "integer" },
                         "min_ram": { "type": "integer" },
-                        "properties": { "$ref": "#/objects/image_properties"},
-    
-                        "checksum": { "type": "string" },
-                        "size": { "type": "integer" }
+                        "name": { "type": "string" },
+                        "owner": { "type": "string" },
+                        "properties": { "$ref": "#/objects/image_properties" },
+                        "size": { "type": "integer" },
+                        "status": { "type": "string" }
                     }
                 },
                 { "$ref": "types.json#/definitions/timestamps" }

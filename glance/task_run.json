@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "task.run",
+
+    "$ref": "objects.json#/objects/task"
+}
