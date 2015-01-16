@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "image.create",
+
+    "type": "object",
+
+    "properties": {
+        "bytes_sent": { "type": "integer" },
+        "image_id": { "$ref": "types.json#/definitions/uuid" },
+        "owner_id": { "type": "string" },
+        "receiver_tenant_id": { "type": "string" },
+        "receiver_user_id": { "type": "string" }
+    }
+}

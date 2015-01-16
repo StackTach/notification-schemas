@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "snapshot_instance",
+
+    "type": "object",
+    "properties": {
+        "exception": { "$ref": "objects.json#/objects/instance_exception" },
+        "args": {
+            "type": "object",
+            "properties": {
+                "context": { "$ref": "objects.json#/objects/context" },
+                "image_id": { "$ref": "types.json#/definitions/string_null" },
+                "instance": { "$ref": "objects.json#/objects/instance_full" },
+                "self": { "$ref": "types.json#/definitions/string_null" }
+            }
+        }
+    }
+}

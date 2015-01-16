@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "terminate_instance",
+
+    "type": "object",
+    "properties": {
+        "exception": { "$ref": "objects.json#/objects/instance_exception" },
+        "args": {
+            "type": "object",
+            "properties": {
+                "bdms": {
+                    "type": "array",
+                    "items": { "$ref": "objects.json#/objects/bdm" }
+                },
+                "context": { "$ref": "objects.json#/objects/context" },
+                "instance": { "$ref": "objects.json#/objects/instance_full" },
+                "reservations": { "type": "array" },
+                "self": { "$ref": "types.json#/definitions/string_null" }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "rebuild_instance",
+
+    "type": "object",
+    "properties": {
+        "exception": { "$ref": "objects.json#/objects/instance_exception" },
+        "args": {
+            "type": "object",
+            "properties": {
+                "bdms": {
+                    "type": "array",
+                    "items": { "$ref": "objects.json#/objects/bdm" }
+                },
+                "context": { "$ref": "objects.json#/objects/context" },
+                "image_ref": { "$ref": "types.json#/definitions/uuid" },
+                "injected_files": { "type": "array" },
+                "instance": { "$ref": "objects.json#/objects/instance_full" },
+                "on_shared_storage": { "type": "boolean" },
+                "orig_image_ref": { "$ref": "types.json#/definitions/uuid" },
+                "orig_sys_metadata": { "$ref": "objects.json#/objects/system_metadata" },
+                "preserve_ephemeral": { "type": "boolean" },
+                "recreate": { "type": "boolean" },
+                "reservations": { "type": "array" },
+                "self": { "$ref": "types.json#/definitions/string_null" }
+            }
+        }
+    }
+}

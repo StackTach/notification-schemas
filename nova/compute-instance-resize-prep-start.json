@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute.instance.resize.prep.start",
+
+    "$ref": "objects.json#/objects/instance_common"
+}

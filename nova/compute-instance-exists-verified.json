@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute.instance.exists.verified",
+
+    "allOf": [
+        { "$ref": "objects.json#/objects/instance_common" },
+        {
+            "properties": {
+                "audit_period_beginning": { "type": "string", "format": "date-time"},
+                "audit_period_ending": { "type": "string", "format": "date-time"},
+                "bandwidth": { "$ref": "objects.json#/objects/bandwidth" }
+            }
+        }
+    ]
+}

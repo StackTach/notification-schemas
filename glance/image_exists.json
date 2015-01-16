@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "image.exists",
+
+    "type": "object",
+
+    "properties": {
+        "images": { "type": "array", "items": { "$ref": "objects.json#/objects/image" } },
+        "owner": { "type": "string" },
+        "audit_period_beginning": { "type": "string", "format": "date-time" },
+        "audit_period_ending": { "type": "string", "format": "date-time" },
+        "page_size": { "type": "integer" },
+        "page_number": { "type": "integer" },
+        "total_pages": { "type": "integer" }
+    }
+}

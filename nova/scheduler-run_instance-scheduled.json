@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "scheduler.run_instance.scheduled",
+
+    "type": "object",
+    "properties": {
+        "instance_id": { "$ref": "types.json#/uuid" },
+        "weighted_host": {
+            "type": "object",
+            "properties": {
+                "host": { "$ref": "types.json#/uuid" },
+                "weight": { "type": "number" }
+            }
+        },
+        "request_spec": { "$ref": "scheduler.json#/messages/request_spec" }
+    }
+}

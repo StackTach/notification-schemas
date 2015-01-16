@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+
+    "title": "compute.instance.reboot.start",
+
+    "$ref": "objects.json#/objects/instance_common"
+}
