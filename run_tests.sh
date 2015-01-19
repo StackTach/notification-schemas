@@ -4,7 +4,6 @@
 FAILURES=0
 
 for d in 'nova' 'glance' ; do
-    echo -n "Dir $d"
     for file in $d/*.json ; do
         if [[ ! -d "$file" ]]; then
             echo -n "Validating: $file ... "
