@@ -40,7 +40,7 @@
             "description": "An number represented as a string, with optional sign and fractional portion",
 
             "type": "string",
-            "pattern": "^0|-?[1-9][0-9]*(\.[0-9]+)?"
+            "pattern": "^0|-?[1-9][0-9]*(\\.[0-9]+)?"
         },
 
         "date_time_null": {
@@ -60,7 +60,7 @@
             "description": "UUID formatted string",
 
             "type": "string",
-            "pattern": "^[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-‌​fA-F]{12}$"
+            "pattern": "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-‌​fA-F]{12}$"
         },
 
         "uuid_empty": {
