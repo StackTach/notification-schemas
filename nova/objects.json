@@ -8,7 +8,6 @@
         "image_properties": {
             "type": "object",
             "properties": {
-                // Lack of consistency of booleans
                 "cache_in_nova": { "enum": ["True", "False"]},
                 "image_type": { "type": "string" },
                 "os_distro": { "type": "string" },
@@ -17,7 +16,6 @@
     
                 "org.openstack__1__os_distro": { "type": "string" },
                 "org.openstack__1__architecture": { "type": "string" },
-                // Can this be an integer?
                 "org.openstack__1__os_version": { "type": "string" }
             }
         },
@@ -50,16 +48,11 @@
                 {
                     "type": "object",
                     "properties": {
-                        // This is "disabled" in some places and false in others
                         "auto_disk_config": { "$ref": "types.json#/definitions/enabled_disabled"},
                         "base_image_ref": { "$ref": "types.json#/definitions/uuid"},
-                        // Enum?
                         "container_format": { "type": "string" },
-                        // Enum?
                         "disk_format": { "type": "string" },
-                        // Inconsistent with image - why not an integer?
                         "min_disk": { "$ref": "types.json#/definitions/integer_string"},
-                        // Inconsistent with image - why is this a string and not an integer?
                         "min_ram": { "$ref": "types.json#/definitions/enabled_disabled"}
                     }
                 },
@@ -165,7 +158,6 @@
                             { "$ref": "#/objects/ip" },
                             {
                                 "properties": {
-                                    // not sure if an entry here would be an ip object, plain ip address, or what
                                     "floating_ips": {
                                         "type": "array",
                                         "items": { "type": "string" }
@@ -247,9 +239,6 @@
             "additionalProperties": { "type": "string" }
         },
 
-        // Not sure if this really needs a full schema. The contents are
-        // fairly free-form. Might be best just to just use the generic
-        // 'metadata' object above
         "system_metadata": {
             "allOf": [
                 { "$ref": "#/objects/metadata" },
@@ -314,14 +303,13 @@
 
         "instance_common": {
             "description": "Set of instance properties used in many instance notifications",
-            // Note: some notifications do not include image_name and/or message. This seems random."
             "allOf": [
                 { "$ref": "#/objects/instance_base" },
                 { "$ref": "types.json#/definitions/timestamps" },
                 {
                     "properties": {
                         "disk_gb": { "type": "integer" },
-                        "image_meta": { "$ref": "objects.json#/image_meta" },
+                        "image_meta": { "$ref": "#/objects/image_meta" },
                         "image_name": { "type": "string" },
                         "image_ref_url": { "type": "string" },
                         "instance_flavor_id": { "type": "string" },
@@ -429,8 +417,6 @@
             }
         },
 
-        // Why are there two slightly different exception representations?
-        // Should only need one. UUID version seems to be only used in one place?
         "instance_exception": {
             "type": "object",
             "properties": {
