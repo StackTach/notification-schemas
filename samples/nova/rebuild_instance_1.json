@@ -1,0 +1,370 @@
+{
+    "args": {
+        "bdms": [], 
+        "context": {
+            "_read_deleted": "no", 
+            "auth_token": "312366baaebc4bcca779f379b1051ea5", 
+            "glance_api_servers": null, 
+            "instance_lock_checked": false, 
+            "is_admin": false, 
+            "project_id": "529688", 
+            "project_name": "529688", 
+            "quota_class": null, 
+            "remote_address": "207.250.213.193", 
+            "request_id": "req-b1aaa1bb-3b26-4ec6-9d0c-3e64ecaa65b6", 
+            "roles": [
+                "checkmate", 
+                "object-store:default", 
+                "compute:default", 
+                "identity:user-admin", 
+                "admin"
+            ], 
+            "timestamp": "2015-01-23 01:44:24.698356", 
+            "user_id": "996377", 
+            "user_name": "996377"
+        }, 
+        "image_ref": "8a7a7435-071f-447b-9c54-540f0d0d1883", 
+        "injected_files": [], 
+        "instance": {
+            "access_ip_v4": "195.128.174.244", 
+            "access_ip_v6": "a269:ff3b:26f0:aab9:7678:631e:e603:0047", 
+            "architecture": "x64", 
+            "auto_disk_config": true, 
+            "availability_zone": null, 
+            "cell_name": null, 
+            "cleaned": false, 
+            "config_drive": "", 
+            "created_at": "2015-01-23 00:29:40.778356", 
+            "default_ephemeral_device": null, 
+            "default_swap_device": null, 
+            "deleted": false, 
+            "deleted_at": null, 
+            "disable_terminate": false, 
+            "display_description": "Instance_586709", 
+            "display_name": "Instance_586709", 
+            "ephemeral_gb": 0, 
+            "ephemeral_key_uuid": null, 
+            "host": "host-156051", 
+            "hostname": "server-493052", 
+            "id": 355137, 
+            "image_ref": "8a7a7435-071f-447b-9c54-540f0d0d1883", 
+            "info_cache": {
+                "created_at": "2015-01-23 00:29:45.778356", 
+                "deleted": false, 
+                "deleted_at": null, 
+                "instance_uuid": "426ce485-65c2-4fd9-95b4-7b88b5367504", 
+                "network_info": [
+                    {
+                        "address": "BC:76:4E:08:10:E8", 
+                        "devname": "device-480677", 
+                        "id": "e0c44da4-6476-4633-8fa7-25510dd1b88e", 
+                        "meta": {}, 
+                        "network": {
+                            "bridge": "publicnet", 
+                            "id": "33d0ec67-f346-4cef-9d9d-6c32619ea7ee", 
+                            "label": "public", 
+                            "meta": {
+                                "injected": false, 
+                                "nvp_managed": false, 
+                                "tenant_id": "529688"
+                            }, 
+                            "subnets": [
+                                {
+                                    "cidr": "162.237.158.158/24", 
+                                    "dns": [
+                                        {
+                                            "address": "148.205.150.198", 
+                                            "meta": {}, 
+                                            "type": "dns", 
+                                            "version": 4
+                                        }, 
+                                        {
+                                            "address": "227.158.140.180", 
+                                            "meta": {}, 
+                                            "type": "dns", 
+                                            "version": 4
+                                        }
+                                    ], 
+                                    "gateway": {
+                                        "address": "166.205.207.226", 
+                                        "meta": {}, 
+                                        "type": "gateway", 
+                                        "version": 4
+                                    }, 
+                                    "ips": [
+                                        {
+                                            "address": "195.128.174.244", 
+                                            "floating_ips": [], 
+                                            "meta": {}, 
+                                            "type": "fixed", 
+                                            "version": 4
+                                        }
+                                    ], 
+                                    "meta": {}, 
+                                    "routes": [], 
+                                    "version": 4
+                                }, 
+                                {
+                                    "cidr": "2a00:1a48:7806:114::/64", 
+                                    "dns": [
+                                        {
+                                            "address": "148.205.150.198", 
+                                            "meta": {}, 
+                                            "type": "dns", 
+                                            "version": 4
+                                        }, 
+                                        {
+                                            "address": "227.158.140.180", 
+                                            "meta": {}, 
+                                            "type": "dns", 
+                                            "version": 4
+                                        }
+                                    ], 
+                                    "gateway": {
+                                        "address": "fe80::def", 
+                                        "meta": {}, 
+                                        "type": "gateway", 
+                                        "version": 6
+                                    }, 
+                                    "ips": [
+                                        {
+                                            "address": "a269:ff3b:26f0:aab9:7678:631e:e603:0047", 
+                                            "floating_ips": [], 
+                                            "meta": {}, 
+                                            "type": "fixed", 
+                                            "version": 6
+                                        }
+                                    ], 
+                                    "meta": {}, 
+                                    "routes": [], 
+                                    "version": 6
+                                }
+                            ]
+                        }, 
+                        "ovs_interfaceid": null, 
+                        "qbg_params": null, 
+                        "qbh_params": null, 
+                        "type": null
+                    }, 
+                    {
+                        "address": "BC:76:4E:08:12:75", 
+                        "devname": "device-480677", 
+                        "id": "4a6a1702-1cfa-45ae-b651-7454fe7cd6dd", 
+                        "meta": {}, 
+                        "network": {
+                            "bridge": "servicenet", 
+                            "id": "50815397-18ed-4a1a-9c33-aa9070d15943", 
+                            "label": "private", 
+                            "meta": {
+                                "injected": false, 
+                                "nvp_managed": false, 
+                                "tenant_id": "529688"
+                            }, 
+                            "subnets": [
+                                {
+                                    "cidr": "218.226.178.244/18", 
+                                    "dns": [
+                                        {
+                                            "address": "227.158.140.180", 
+                                            "meta": {}, 
+                                            "type": "dns", 
+                                            "version": 4
+                                        }, 
+                                        {
+                                            "address": "148.205.150.198", 
+                                            "meta": {}, 
+                                            "type": "dns", 
+                                            "version": 4
+                                        }
+                                    ], 
+                                    "gateway": {
+                                        "address": null, 
+                                        "meta": {}, 
+                                        "type": "gateway", 
+                                        "version": null
+                                    }, 
+                                    "ips": [
+                                        {
+                                            "address": "205.207.214.212", 
+                                            "floating_ips": [], 
+                                            "meta": {}, 
+                                            "type": "fixed", 
+                                            "version": 4
+                                        }
+                                    ], 
+                                    "meta": {}, 
+                                    "routes": [
+                                        {
+                                            "cidr": "134.144.140.215/12", 
+                                            "gateway": {
+                                                "address": "200.231.171.151", 
+                                                "meta": {}, 
+                                                "type": "nexthop", 
+                                                "version": 4
+                                            }, 
+                                            "interface": null, 
+                                            "meta": {}
+                                        }, 
+                                        {
+                                            "cidr": "241.140.224.197/12", 
+                                            "gateway": {
+                                                "address": "200.231.171.151", 
+                                                "meta": {}, 
+                                                "type": "nexthop", 
+                                                "version": 4
+                                            }, 
+                                            "interface": null, 
+                                            "meta": {}
+                                        }
+                                    ], 
+                                    "version": 4
+                                }
+                            ]
+                        }, 
+                        "ovs_interfaceid": null, 
+                        "qbg_params": null, 
+                        "qbh_params": null, 
+                        "type": null
+                    }
+                ], 
+                "updated_at": "2015-01-23 00:29:47.778356"
+            }, 
+            "instance_type_id": 3, 
+            "kernel_id": "", 
+            "key_data": null, 
+            "key_name": "", 
+            "launch_index": 0, 
+            "launched_at": "2015-01-23 01:41:55.778356", 
+            "launched_on": "c-10-21-17-135", 
+            "locked": false, 
+            "locked_by": null, 
+            "memory_mb": 1024, 
+            "metadata": {}, 
+            "name": "instance-426ce485-65c2-4fd9-95b4-7b88b5367504", 
+            "node": "node-812616", 
+            "os_type": "linux", 
+            "power_state": 1, 
+            "progress": 0, 
+            "project_id": "529688", 
+            "ramdisk_id": "", 
+            "reservation_id": "res-543226", 
+            "root_device_name": "/dev/xvda", 
+            "root_gb": 40, 
+            "scheduled_at": "2015-01-23 00:29:45.778356", 
+            "security_groups": {
+                "objects": [
+                    {
+                        "created_at": "2015-01-22 16:36:17.778356", 
+                        "deleted": false, 
+                        "deleted_at": null, 
+                        "description": "default", 
+                        "id": 3162, 
+                        "name": "Instance_586709", 
+                        "project_id": "529688", 
+                        "updated_at": null, 
+                        "user_id": "996377"
+                    }
+                ]
+            }, 
+            "shutdown_terminate": false, 
+            "system_metadata": {
+                "image_auto_disk_config": "True", 
+                "image_base_image_ref": "c83bd471-61a8-476c-bfb7-cb48633551c5", 
+                "image_container_format": "ovf", 
+                "image_disk_format": "vhd", 
+                "image_image_type": "snapshot", 
+                "image_instance_type_ephemeral_gb": "20", 
+                "image_instance_type_flavorid": "performance1-2", 
+                "image_instance_type_id": "10", 
+                "image_instance_type_memory_mb": "2048", 
+                "image_instance_type_name": "2 GB Performance", 
+                "image_instance_type_root_gb": "40", 
+                "image_instance_type_rxtx_factor": "400.0", 
+                "image_instance_type_swap": "0", 
+                "image_instance_type_vcpu_weight": "10", 
+                "image_instance_type_vcpus": "2", 
+                "image_instance_uuid": "6ba0ca54-8578-49c6-bed4-bafe4ec11200", 
+                "image_min_disk": "40", 
+                "image_min_ram": "512", 
+                "image_network_allocated": "True", 
+                "image_org.openstack__1__architecture": "x64", 
+                "image_org.openstack__1__os_distro": "com.redhat", 
+                "image_org.openstack__1__os_version": "5.10", 
+                "image_os_distro": "rhel", 
+                "image_os_type": "linux", 
+                "image_user_id": "996377", 
+                "image_xenapi_image_compression_level": "1", 
+                "instance_type_ephemeral_gb": "0", 
+                "instance_type_flavorid": "3", 
+                "instance_type_id": "3", 
+                "instance_type_memory_mb": "1024", 
+                "instance_type_name": "1GB Standard Instance", 
+                "instance_type_root_gb": "40", 
+                "instance_type_rxtx_factor": "120.0", 
+                "instance_type_swap": "1024", 
+                "instance_type_vcpu_weight": "12", 
+                "instance_type_vcpus": "1", 
+                "network_allocated": "True"
+            }, 
+            "task_state": "rebuild_spawning", 
+            "terminated_at": null, 
+            "updated_at": "2015-01-23 01:45:23.504356", 
+            "user_data": null, 
+            "user_id": "996377", 
+            "uuid": "426ce485-65c2-4fd9-95b4-7b88b5367504", 
+            "vcpus": 1, 
+            "vm_mode": "xen", 
+            "vm_state": "active"
+        }, 
+        "on_shared_storage": false, 
+        "orig_image_ref": "8a7a7435-071f-447b-9c54-540f0d0d1883", 
+        "orig_sys_metadata": {
+            "image_auto_disk_config": "True", 
+            "image_base_image_ref": "c83bd471-61a8-476c-bfb7-cb48633551c5", 
+            "image_container_format": "ovf", 
+            "image_disk_format": "vhd", 
+            "image_image_type": "snapshot", 
+            "image_instance_type_ephemeral_gb": "20", 
+            "image_instance_type_flavorid": "performance1-2", 
+            "image_instance_type_id": "10", 
+            "image_instance_type_memory_mb": "2048", 
+            "image_instance_type_name": "2 GB Performance", 
+            "image_instance_type_root_gb": "40", 
+            "image_instance_type_rxtx_factor": "400.0", 
+            "image_instance_type_swap": "0", 
+            "image_instance_type_vcpu_weight": "10", 
+            "image_instance_type_vcpus": "2", 
+            "image_instance_uuid": "6ba0ca54-8578-49c6-bed4-bafe4ec11200", 
+            "image_min_disk": "40", 
+            "image_min_ram": "512", 
+            "image_network_allocated": "True", 
+            "image_org.openstack__1__architecture": "x64", 
+            "image_org.openstack__1__os_distro": "com.redhat", 
+            "image_org.openstack__1__os_version": "5.10", 
+            "image_os_distro": "rhel", 
+            "image_os_type": "linux", 
+            "image_user_id": "996377", 
+            "image_xenapi_image_compression_level": "1", 
+            "instance_type_ephemeral_gb": "0", 
+            "instance_type_flavorid": "3", 
+            "instance_type_id": "3", 
+            "instance_type_memory_mb": "1024", 
+            "instance_type_name": "1GB Standard Instance", 
+            "instance_type_root_gb": "40", 
+            "instance_type_rxtx_factor": "120.0", 
+            "instance_type_swap": "1024", 
+            "instance_type_vcpu_weight": "12", 
+            "instance_type_vcpus": "1", 
+            "network_allocated": "True"
+        }, 
+        "preserve_ephemeral": false, 
+        "recreate": false, 
+        "self": null
+    }, 
+    "exception": {
+        "kwargs": {
+            "code": 404, 
+            "instance_id": "426ce485-65c2-4fd9-95b4-7b88b5367504"
+        }
+    }
+}

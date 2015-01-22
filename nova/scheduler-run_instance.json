@@ -5,7 +5,7 @@
 
     "type": "object",
     "properties": {
-        "instance_id": { "$ref": "types.json#/definition/uuid" },
+        "instance_id": { "$ref": "types.json#/definitions/uuid" },
         "instance_properties": { "$ref": "objects.json#/objects/instance_full" },
         "method": { "type": "string" },
         "reason": { "$ref": "objects.json#/objects/instance_exception" },

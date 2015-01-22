@@ -8,7 +8,7 @@
         "image_properties": {
             "type": "object",
             "properties": {
-                "cache_in_nova": { "enum": ["True", "False"]},
+                "cache_in_nova": { "$ref": "types.json#/definitions/enabled_disabled"},
                 "image_type": { "type": "string" },
                 "os_distro": { "type": "string" },
                 "os_type": { "type": "string" },
@@ -25,7 +25,7 @@
                 {
                     "type": "object",
                     "properties": {
-                        "checksum": { "type": "string" },
+                        "checksum": { "$ref": "types.json#/definitions/string_null"},
                         "container_format": { "type": "string" },
                         "disk_format": { "type": "string" },
                         "id": { "$ref": "types.json#/definitions/uuid" },
@@ -52,8 +52,18 @@
                         "base_image_ref": { "$ref": "types.json#/definitions/uuid"},
                         "container_format": { "type": "string" },
                         "disk_format": { "type": "string" },
-                        "min_disk": { "$ref": "types.json#/definitions/integer_string"},
-                        "min_ram": { "$ref": "types.json#/definitions/enabled_disabled"}
+                        "min_disk": {
+                            "oneOf": [
+                                { "$ref": "types.json#/definitions/integer_string" },
+                                { "type": "integer" }
+                            ]
+                        },
+                        "min_ram": {
+                            "oneOf": [
+                                { "$ref": "types.json#/definitions/integer_string" },
+                                { "type": "integer" }
+                            ]
+                        }
                     }
                 },
                 { "$ref": "#/objects/image_properties" }
@@ -123,10 +133,20 @@
         "ip": {
             "type": "object",
             "properties": {
-                "address": { "$ref": "types.json#/definitions/ip_address" },
+                "address": {
+                    "oneOf": [
+                        { "$ref": "types.json#/definitions/ip_address" },
+                        { "type": "null" }
+                    ]
+                },
                 "meta": { "type": "object" },
                 "type": { "type": "string" },
-                "version": { "$ref": "types.json#/definitions/ip_version" }
+                "version": {
+                    "oneOf": [
+                        { "$ref": "types.json#/definitions/ip_version" },
+                        { "type": "null" }
+                    ]
+                }
             }
         },
 
@@ -235,42 +255,11 @@
         },
 
         "metadata": {
-            "type": "object",
-            "additionalProperties": { "type": "string" }
+            "type": "object"
         },
 
         "system_metadata": {
-            "allOf": [
-                { "$ref": "#/objects/metadata" },
-                {
-                    "properties": {
-                        "image_auto_disk_config": { "$ref": "types.json#/definitions/enabled_disabled" },
-                        "image_base_image_ref": { "$ref": "types.json#/definitions/uuid" },
-                        "image_cache_in_nova": { "$ref": "types.json#/definitions/boolean_string" },
-                        "image_container_format": { "type": "string" },
-                        "image_disk_format": { "type": "string" },
-                        "image_image_type": { "type": "string" },
-                        "image_min_disk": { "type": "integer" },
-                        "image_min_ram": { "type": "integer" },
-                        "image_org.openstack__1__architecture": { "type": "string" },
-                        "image_org.openstack__1__os_distro": { "type": "string" },
-                        "image_org.openstack__1__os_version": { "type": "string" },
-                        "image_os_distro": { "type": "string" },
-                        "image_os_type": { "type": "string" },
-                        "image_vm_mode": { "type": "string" },
-                        "instance_type_ephemeral_gb": { "$ref": "types.json#/definitions/integer_string" },
-                        "instance_type_flavorid": { "type": "string" },
-                        "instance_type_id": { "type": "string" },
-                        "instance_type_memory_mb": { "$ref": "types.json#/definitions/integer_string" },
-                        "instance_type_name": { "type": "string" },
-                        "instance_type_root_gb": { "$ref": "types.json#/definitions/integer_string" },
-                        "instance_type_rxtx_factor": { "$ref": "types.json#/definitions/integer_string" },
-                        "instance_type_swap": { "type": "string" },
-                        "instance_type_vcpu_weight": { "$ref": "types.json#/definitions/integer_string" },
-                        "instance_type_vcpus": { "$ref": "types.json#/definitions/integer_string" }
-                    }
-                }
-            ]
+            "type": "object"
         },
 
         "instance_base": {
@@ -279,7 +268,7 @@
             "properties": {
                 "access_ip_v4": { "$ref": "types.json#/definitions/string_null" },
                 "access_ip_v6": { "$ref": "types.json#/definitions/string_null" },
-                "architecture": { "type": "string" },
+                "architecture": { "$ref": "types.json#/definitions/string_null" },
                 "availability_zone": { "$ref": "types.json#/definitions/string_null" },
                 "display_name": { "type": "string" },
                 "ephemeral_gb": {"type": "integer" },
@@ -287,7 +276,7 @@
                 "hostname": { "$ref": "types.json#/definitions/string_null" },
                 "instance_type_id": { "type": "integer" },
                 "kernel_id": { "type": "string" },
-                "launched_at": { "type": "string", "format": "date-time"},
+                "launched_at": { "$ref": "types.json#/definitions/date_time_null"},
                 "memory_mb": { "type": "integer" },
                 "metadata": { "type": "object" },
                 "node": { "type": "string" },
@@ -343,7 +332,7 @@
                         "id": { "type": "integer" },
                         "image_ref": { "$ref": "types.json#/definitions/uuid"},
                         "key_data": { "$ref": "types.json#/definitions/string_null" },
-                        "key_name": { "type": "string" },
+                        "key_name": { "$ref": "types.json#/definitions/string_null" },
                         "launch_index": { "type": "integer" },
                         "launched_on": { "$ref": "types.json#/definitions/string_null" },
                         "locked": { "type": "boolean" },
@@ -359,7 +348,7 @@
                         "task_state": { "type": "string" },
                         "user_data": { "$ref": "types.json#/definitions/string_null" },
                         "uuid": { "$ref": "types.json#/definitions/uuid" },
-                        "vm_mode": { "type": "string" },
+                        "vm_mode": { "$ref": "types.json#/definitions/string_null" },
                         "vm_state": { "type": "string" },
 
                         "security_groups": {
@@ -392,7 +381,7 @@
                     "type": "array",
                     "items": { "type": "string" }
                 },
-                "timestamp": { "$ref": "types.json#/definitions/date-time" },
+                "timestamp": { "$ref": "types.json#/definitions/date_time_null" },
                 "user_id": { "type": "string" },
                 "user_name": { "type": "string" }
             }
@@ -423,7 +412,7 @@
                 "kwargs": {
                     "allOf": [
                         {
-                            "oneOf": [
+                            "anyOf": [
                                 {
                                     "properties": {
                                         "instance_id": { "$ref": "types.json#/definitions/uuid" }

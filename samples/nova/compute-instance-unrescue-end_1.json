@@ -1,0 +1,73 @@
+{
+    "access_ip_v4": "207.190.182.238", 
+    "access_ip_v6": "76e1:f8e4:0a39:bb93:52ba:cc55:9e56:5f5b", 
+    "architecture": "x64", 
+    "availability_zone": null, 
+    "created_at": "2014-06-27 04:57:33.993356", 
+    "deleted_at": "", 
+    "disk_gb": 20, 
+    "display_name": "Instance_826256", 
+    "ephemeral_gb": 0, 
+    "fixed_ips": [
+        {
+            "address": "207.190.182.238", 
+            "floating_ips": [], 
+            "label": "public", 
+            "meta": {}, 
+            "type": "fixed", 
+            "version": 4
+        }, 
+        {
+            "address": "76e1:f8e4:0a39:bb93:52ba:cc55:9e56:5f5b", 
+            "floating_ips": [], 
+            "label": "public", 
+            "meta": {}, 
+            "type": "fixed", 
+            "version": 6
+        }, 
+        {
+            "address": "171.222.163.245", 
+            "floating_ips": [], 
+            "label": "private", 
+            "meta": {}, 
+            "type": "fixed", 
+            "version": 4
+        }
+    ], 
+    "host": "host-152264", 
+    "hostname": "server-478459", 
+    "image_meta": {
+        "auto_disk_config": "True", 
+        "cache_in_nova": "True", 
+        "container_format": "ovf", 
+        "disk_format": "vhd", 
+        "image_type": "base", 
+        "min_disk": "20", 
+        "min_ram": "512", 
+        "org.openstack__1__architecture": "x64", 
+        "org.openstack__1__os_distro": "org.centos", 
+        "org.openstack__1__os_version": "6.4", 
+        "os_distro": "centos", 
+        "os_type": "linux"
+    }, 
+    "image_ref_url": "http://199.238.202.171:9292/images/f20d7623-e7f5-41a9-908f-ad89d1623fe4", 
+    "instance_flavor_id": "2", 
+    "instance_id": "c4b156c3-9246-42ab-8050-b3f0748a41d8", 
+    "instance_type": "512MB Standard Instance", 
+    "instance_type_id": 2, 
+    "kernel_id": "", 
+    "launched_at": "2015-01-23 08:52:09.993356", 
+    "memory_mb": 512, 
+    "metadata": {}, 
+    "node": "node-139493", 
+    "os_type": "linux", 
+    "ramdisk_id": "", 
+    "reservation_id": "res-31445", 
+    "root_gb": 20, 
+    "state": "active", 
+    "state_description": "", 
+    "tenant_id": "352307", 
+    "terminated_at": "", 
+    "user_id": "310658", 
+    "vcpus": 1
+}

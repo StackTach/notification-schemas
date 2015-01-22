@@ -55,12 +55,16 @@
             ]
         },
 
-        "uuid": {
+        "uuid_regex": {
             "title": "UUID string",
             "description": "UUID formatted string",
 
             "type": "string",
             "pattern": "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-‌​fA-F]{12}$"
+        },
+
+        "uuid": {
+            "type": "string"
         },
 
         "uuid_empty": {
@@ -88,18 +92,6 @@
             ]
         },
 
-        "enabled_disabled": {
-            "oneOf": [
-                {
-                    "type": "string",
-                    "enum": ["enabled", "disabled"]
-                },
-                {
-                    "type": "boolean"
-                }
-            ]
-        },
-
         "boolean_string": {
             "type": "string",
             "enum": ["True", "False"]
@@ -110,7 +102,27 @@
             "enum": ["yes", "no"]
         },
 
-        "timestamps": {
+        "boolean_string_1_0": {
+            "type": "string",
+            "enum": ["1", "0"]
+        },
+
+         "enabled_disabled": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "enum": ["enabled", "disabled"]
+                },
+                { "$ref": "#/definitions/boolean_string" },
+                { "$ref": "#/definitions/boolean_string_y_n" },
+                { "$ref": "#/definitions/boolean_string_1_0" },
+                {
+                    "type": "boolean"
+                }
+            ]
+        },
+
+       "timestamps": {
             "type": "object",
             "properties": {
                 "created_at": { "type": "string", "format": "date-time" },
@@ -134,7 +146,7 @@
 
         "ip_address": {
             "title": "IPv4 or IPv6 address",
-            "oneOf": [
+            "anyOf": [
                 { "$ref": "#/definitions/ip_v4"},
                 { "$ref": "#/definitions/ip_v6"}
             ]

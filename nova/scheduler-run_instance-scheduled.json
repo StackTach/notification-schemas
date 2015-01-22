@@ -5,11 +5,11 @@
 
     "type": "object",
     "properties": {
-        "instance_id": { "$ref": "types.json#/uuid" },
+        "instance_id": { "$ref": "types.json#/definitions/uuid" },
         "weighted_host": {
             "type": "object",
             "properties": {
-                "host": { "$ref": "types.json#/uuid" },
+                "host": { "$ref": "types.json#/definitions/uuid" },
                 "weight": { "type": "number" }
             }
         },
